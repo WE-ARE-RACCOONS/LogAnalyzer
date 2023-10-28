@@ -63,7 +63,7 @@ jobs:
         docker push ywj9811/postgraduate_log:latest
 
     - name: Deploy
-      uses: appleboy/ssh-action@1.0.0
+      uses: appleboy/ssh-action@master
       with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
