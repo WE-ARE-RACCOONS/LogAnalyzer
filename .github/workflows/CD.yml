@@ -71,6 +71,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           envs: GITHUB_SHA
           script: |
+            chmod +x /home/ywj9811/config
             docker-compose -f /home/ywj9811/config/docker-compose.yml down
             docker-compose -f /home/ywj9811/config/docker-compose.yml pull
             docker-compose -f /home/ywj9811/config/docker-compose.yml up -d --force-recreate --build
