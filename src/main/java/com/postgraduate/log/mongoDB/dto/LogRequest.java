@@ -15,11 +15,7 @@ public class LogRequest {
     private Integer executeTime;
     private String methodName;
     private String exceptionMessage;
-    public LogRequest(String logId, Integer executeTime, String methodName) {
-        this.logId = logId;
-        this.executeTime = executeTime;
-        this.methodName = methodName;
-    }
+
     public Log toEntity() {
         if (exceptionMessage == null)
             exceptionMessage = "";

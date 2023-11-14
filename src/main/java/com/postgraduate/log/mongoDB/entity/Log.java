@@ -37,7 +37,6 @@ public class Log {
             this.exceptionMessage=exceptionMessage;
         }else{
             this.logType = LogType.INFO;
-            this.exceptionMessage="";
         }
     }
 }
