@@ -10,6 +10,8 @@ import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.TimeZone;
 
 @Document(collection = "log")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,7 +25,7 @@ public class Log {
     private String exceptionMessage;
     private LogType logType;
     @Indexed(expireAfterSeconds = 60*60*24*30) //30일
-    private LocalDateTime logDate = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+    private LocalDateTime logDate = LocalDateTime.now().plusHours(9);
 
     public Log(String logId, Integer executeTime, String methodName, String exceptionMessage) {
         this.logId = logId;
