@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Document(collection = "log")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,7 +23,7 @@ public class Log {
     private String exceptionMessage;
     private LogType logType;
     @Indexed(expireAfterSeconds = 60*60*24*30) //30일
-    private LocalDateTime logDate = LocalDateTime.now();
+    private LocalDateTime logDate = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
 
     public Log(String logId, Integer executeTime, String methodName, String exceptionMessage) {
         this.logId = logId;
