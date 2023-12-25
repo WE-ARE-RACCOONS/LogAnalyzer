@@ -6,12 +6,11 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.TimeZone;
+
+import static com.postgraduate.log.mongoDB.entity.LogType.ERROR;
+import static com.postgraduate.log.mongoDB.entity.LogType.INFO;
 
 @Document(collection = "log")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -31,15 +30,14 @@ public class Log {
         this.logId = logId;
         this.executeTime = executeTime;
         this.methodName = methodName;
-        checkExceptionMessage(exceptionMessage);
+        this.logType = ERROR;
+        this.exceptionMessage=exceptionMessage;
     }
 
-    private void checkExceptionMessage(String exceptionMessage){
-        if(StringUtils.hasText(exceptionMessage)){
-            this.logType = LogType.ERROR;
-            this.exceptionMessage=exceptionMessage;
-        }else{
-            this.logType = LogType.INFO;
-        }
+    public Log(String logId, Integer executeTime, String methodName) {
+        this.logId = logId;
+        this.executeTime = executeTime;
+        this.methodName = methodName;
+        this.logType = INFO;
     }
 }
