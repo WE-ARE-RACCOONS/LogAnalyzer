@@ -1,3 +1,5 @@
 package com.postgraduate.log.mongoDB.dto;
 
-public record LogRequest(String logId, Integer executeTime, String methodName, String exceptionMessage) {}
+import com.postgraduate.log.mongoDB.entity.Env;
+
+public record LogRequest(Env env, String logId, Integer executeTime, String methodName, String exceptionMessage) {}
